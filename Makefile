@@ -8,4 +8,4 @@ main.i: main.c
 	gcc -E main.c -o main.i
 	
 clean:
-	del main.exe main.o
+	rm -f main.exe main.o main.i
