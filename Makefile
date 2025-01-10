@@ -5,4 +5,4 @@ main.o: main.c
 	gcc -c main.c -o main.o
 
 clean:
-	del main.o main.exe
+	rm -f main.o main.exe
