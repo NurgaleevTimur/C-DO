@@ -2,7 +2,7 @@
 
 int main(){
 
-	//------ 1 ------
+//------ 1 ------
 	printf("------ 1 ------\n");
 	//Объявление структуры из 9 полей
 	struct s_truct
@@ -36,7 +36,7 @@ int main(){
 	printf("Адрес u_int: %p, значение: %u\n", (void*)&struct_var.u_int_field, struct_var.u_int_field);
 	printf("Адрес u_char: %p, значение: %u\n", (void*)&struct_var.u_char_field, struct_var.u_char_field);
 
-	//------ 2 ------
+//------ 2 ------
 	printf("\n------ 2 ------");
 	//Объявление структуры из 9 полей
 	union u_nion
@@ -70,5 +70,80 @@ int main(){
 	printf("Адрес long: %p, значение: %Lf\n", (void*)&union_var.long_double_union, union_var.long_double_union);
 	printf("Адрес u_int: %p, значение: %u\n", (void*)&union_var.u_int_union, union_var.u_int_union);
 	printf("Адрес u_char: %p, значение: %u\n", (void*)&union_var.u_char_union, union_var.u_char_union);
+
+//------ 3 ------
+	printf("\n------ 3 ------\n");
+	//Преобразование полей объединения в массивы
+	union u_nion_mas
+	{
+		char mas_char_union[16];
+		short mas_short_union[8];
+		int mas_int_union[4];
+		long mas_long_union[2];
+		float mas_float_union[4];
+		double mas_double_union[2];
+		long double long_double_union;
+		unsigned int mas_u_int_union[4];
+		unsigned char mas_u_char_union[16];
+	};
+
+	//Определение переменной объединения
+	union u_nion_mas ar_var;
+
+	//Инициализация объединение ar_var
+    ar_var.mas_int_union[0] = 1;
+    ar_var.mas_int_union[1] = 2;
+    ar_var.mas_int_union[2] = 3;
+    ar_var.mas_int_union[3] = 4;
+    
+    
+    //Вывод размера объединения, размера переменной, адрес переменной
+    printf("Размер объединения: %zu\n", sizeof(union u_nion_mas));
+    printf("Размер переменной: %zu\n", sizeof(ar_var));
+    printf("Адрес переменной: %p\n", (void*)&ar_var);
+
+   // Вывод данных для каждого массива внутри u_nion_mas
+    printf("mas_char_union: \n");
+    for(int i = 0; i < 16; i++) {
+        printf("Адрес mas_char_union[%d]: %p, значение: %d\n", i, (void*)&ar_var.mas_char_union[i], ar_var.mas_char_union[i]);
+    }
+    
+    printf("mas_short_union: \n");
+    for(int i = 0; i < 8; i++) {
+        printf("Адрес mas_short_union[%d]: %p, значение: %d\n", i, (void*)&ar_var.mas_short_union[i], ar_var.mas_short_union[i]);
+    }
+    
+    printf("mas_int_union: \n");
+    for(int i = 0; i < 4; i++) {
+        printf("Адрес mas_int_union[%d]: %p, значение: %d\n", i, (void*)&ar_var.mas_int_union[i], ar_var.mas_int_union[i]);
+    }
+    
+    printf("mas_long_union: \n");
+    for(int i = 0; i < 2; i++) {
+      printf("Адрес mas_long_union[%d]: %p, значение: %ld\n", i, (void*)&ar_var.mas_long_union[i], ar_var.mas_long_union[i]);
+    }
+    
+   printf("mas_float_union: \n");
+   for(int i = 0; i < 4; i++){
+        printf("Адрес mas_float_union[%d]: %p, значение: %f\n", i, (void*)&ar_var.mas_float_union[i], ar_var.mas_float_union[i]);
+   }
+
+   printf("mas_double_union: \n");
+    for(int i = 0; i < 2; i++) {
+        printf("Адрес mas_double_union[%d]: %p, значение: %lf\n", i, (void*)&ar_var.mas_double_union[i], ar_var.mas_double_union[i]);
+    }
+    
+    printf("long_double_union: \n");
+        printf("Адрес long_double_union: %p, значение: %Lf\n", (void*)&ar_var.long_double_union, ar_var.long_double_union);
+    
+    printf("mas_u_int_union: \n");
+    for(int i = 0; i < 4; i++) {
+        printf("Адрес mas_u_int_union[%d]: %p, значение: %u\n", i, (void*)&ar_var.mas_u_int_union[i], ar_var.mas_u_int_union[i]);
+    }
+    
+    printf("mas_u_char_union: \n");
+    for(int i = 0; i < 16; i++) {
+      printf("Адрес mas_u_char_union[%d]: %p, значение: %u\n", i, (void*)&ar_var.mas_u_char_union[i], ar_var.mas_u_char_union[i]);
+    }
 
 }
