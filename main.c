@@ -1,4 +1,84 @@
 #include<stdio.h>
+#include <stddef.h>
+
+//Создание псевдонимов
+typedef enum{
+	CHAR_TYPE,
+	SHORT_TYPE,
+	INT_TYPE,
+	LONG_TYPE,
+	FLOAT_TYPE,
+	DOUBLE_TYPE,
+	U_INT_TYPE,
+	U_CHAR_TYPE
+} DataType;
+
+// Функция для вывода элементов массива любого типа
+void print_array_elements(void* arr, size_t len, DataType type){
+	switch (type){
+		case CHAR_TYPE:{
+			char* char_arr = (char*)arr;
+			for(size_t i = 0; i < len; i++){
+				printf("Адрес элемента №%zu: %p, значение: %d\n", i, &char_arr[i], char_arr[i]);
+			}
+			break;
+		}
+		case SHORT_TYPE:{
+			short* short_arr = (short*)arr;
+			for(size_t i = 0; i < len; i++){
+				printf("Адрес элемента №%zu: %p, значение: %d\n", i, &short_arr[i], short_arr[i]);
+			}
+			break;
+		}
+		case INT_TYPE:{
+			int* int_arr = (int*)arr;
+			for(size_t i = 0; i < len; i++){
+				printf("Адрес элемента №%zu: %p, значение: %d\n", i, &int_arr[i], int_arr[i]);
+			}
+			break;
+		}
+		case LONG_TYPE:{
+			long* long_arr = (long*)arr;
+			for(size_t i = 0; i < len; i++){
+				printf("Адрес элемента №%zu: %p, значение: %ld\n", i, &long_arr[i], long_arr[i]);
+			}
+			break;
+		}
+		case FLOAT_TYPE:{
+			float* float_arr = (float*)arr;
+			for(size_t i = 0; i < len; i++){
+				printf("Адрес элемента №%zu: %p, значение: %f\n", i, &float_arr[i], float_arr[i]);
+			}
+			break;
+		}
+		case DOUBLE_TYPE:{
+			double* double_arr = (double*)arr;
+			for(size_t i = 0; i < len; i++){
+				printf("Адрес элемента №%zu: %p, значение: %lf\n", i, &double_arr[i], double_arr[i]);
+			}
+			break;
+		}
+		case U_INT_TYPE:{
+			unsigned int* u_int_arr = (unsigned int*)arr;
+			for(size_t i = 0; i < len; i++){
+				printf("Адрес элемента №%zu: %p, значение: %u\n", i, &u_int_arr[i], u_int_arr[i]);
+			}
+			break;
+		}
+		case U_CHAR_TYPE:{
+			unsigned char* u_char_arr = (unsigned char*)arr;
+			for(size_t i = 0; i < len; i++){
+				printf("Адрес элемента №%zu: %p, значение: %u\n", i, &u_char_arr[i], u_char_arr[i]);
+			}
+			break;
+		}
+		
+		default:
+			break;
+	}
+}
+
+
 
 int main(){
 
@@ -103,47 +183,31 @@ int main(){
     printf("Адрес переменной: %p\n", (void*)&ar_var);
 
    // Вывод данных для каждого массива внутри u_nion_mas
-    printf("mas_char_union: \n");
-    for(int i = 0; i < 16; i++) {
-        printf("Адрес mas_char_union[%d]: %p, значение: %d\n", i, (void*)&ar_var.mas_char_union[i], ar_var.mas_char_union[i]);
-    }
-    
-    printf("mas_short_union: \n");
-    for(int i = 0; i < 8; i++) {
-        printf("Адрес mas_short_union[%d]: %p, значение: %d\n", i, (void*)&ar_var.mas_short_union[i], ar_var.mas_short_union[i]);
-    }
-    
-    printf("mas_int_union: \n");
-    for(int i = 0; i < 4; i++) {
-        printf("Адрес mas_int_union[%d]: %p, значение: %d\n", i, (void*)&ar_var.mas_int_union[i], ar_var.mas_int_union[i]);
-    }
-    
-    printf("mas_long_union: \n");
-    for(int i = 0; i < 2; i++) {
-      printf("Адрес mas_long_union[%d]: %p, значение: %ld\n", i, (void*)&ar_var.mas_long_union[i], ar_var.mas_long_union[i]);
-    }
-    
-   printf("mas_float_union: \n");
-   for(int i = 0; i < 4; i++){
-        printf("Адрес mas_float_union[%d]: %p, значение: %f\n", i, (void*)&ar_var.mas_float_union[i], ar_var.mas_float_union[i]);
-   }
+	printf("\nmas_char_union: \n");
+    print_array_elements(ar_var.mas_char_union, sizeof(union u_nion_mas) / sizeof(ar_var.mas_char_union[0]), CHAR_TYPE);
 
-   printf("mas_double_union: \n");
-    for(int i = 0; i < 2; i++) {
-        printf("Адрес mas_double_union[%d]: %p, значение: %lf\n", i, (void*)&ar_var.mas_double_union[i], ar_var.mas_double_union[i]);
-    }
-    
-    printf("long_double_union: \n");
-        printf("Адрес long_double_union: %p, значение: %Lf\n", (void*)&ar_var.long_double_union, ar_var.long_double_union);
-    
-    printf("mas_u_int_union: \n");
-    for(int i = 0; i < 4; i++) {
-        printf("Адрес mas_u_int_union[%d]: %p, значение: %u\n", i, (void*)&ar_var.mas_u_int_union[i], ar_var.mas_u_int_union[i]);
-    }
-    
-    printf("mas_u_char_union: \n");
-    for(int i = 0; i < 16; i++) {
-      printf("Адрес mas_u_char_union[%d]: %p, значение: %u\n", i, (void*)&ar_var.mas_u_char_union[i], ar_var.mas_u_char_union[i]);
-    }
+	printf("\nmas_short_union: \n");
+    print_array_elements(ar_var.mas_short_union, sizeof(union u_nion_mas) / sizeof(ar_var.mas_short_union[0]), SHORT_TYPE);
+
+	printf("\nmas_int_union: \n");
+    print_array_elements(ar_var.mas_int_union, sizeof(union u_nion_mas) / sizeof(ar_var.mas_int_union[0]), INT_TYPE);
+
+	printf("\nmas_long_union: \n");
+    print_array_elements(ar_var.mas_long_union, sizeof(union u_nion_mas) / sizeof(ar_var.mas_long_union[0]), LONG_TYPE);
+
+	printf("\nmas_float_union: \n");
+    print_array_elements(ar_var.mas_float_union, sizeof(union u_nion_mas) / sizeof(ar_var.mas_float_union[0]), FLOAT_TYPE);
+
+	printf("\nmas_double_union: \n");
+    print_array_elements(ar_var.mas_double_union, sizeof(union u_nion_mas) / sizeof(ar_var.mas_double_union[0]), DOUBLE_TYPE);
+
+	printf("\nlong_double_union: \n");
+    printf("Адрес long_double_union: %p, значение: %Lf\n", (void*)&ar_var.long_double_union, ar_var.long_double_union);
+
+	printf("\nmas_u_int_union: \n");
+	print_array_elements(ar_var.mas_u_int_union, sizeof(union u_nion_mas) / sizeof(ar_var.mas_u_int_union[0]), U_INT_TYPE);
+
+	printf("\nmas_u_char_union: \n");
+    print_array_elements(ar_var.mas_u_char_union, sizeof(union u_nion_mas) / sizeof(ar_var.mas_u_char_union[0]), U_CHAR_TYPE);
 
 }
