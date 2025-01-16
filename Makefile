@@ -1,8 +1,11 @@
-main.exe: main.o
-	gcc main.o -o main.exe
+main.exe: main.o c.o
+	gcc main.o c.o -o main.exe
 
-main.o: main.c
+main.o: main.c c.h
 	gcc -c main.c -o main.o
 
+c.o: c.c c.h
+	gcc -c c.c -o c.o
+
 clean:
-	rm -f main.o main.exe
+	rm -f main.o c.o main.exe
