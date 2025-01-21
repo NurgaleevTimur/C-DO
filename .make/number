@@ -1,0 +1,11 @@
+# Файл для хранения версии проекта, нужных системных настроек и т.д.
+BASE = 1 
+RELEASE = 1
+
+COMMIT              = $(shell git log --pretty=format:'%H' | wc -l)
+GITCOMMIT           = $(shell expr $(COMMIT) + 1)
+
+#Определение макросов для определения версии проекта и текущего коммита для компилятора
+CFLAGS		+= -D MAJ_VERSION=$(BASE)
+CFLAGS		+= -D MIN_VERSION=$(RELEASE)
+CFLAGS     	+= -D BUILD_VERSION=$(GITCOMMIT)
