@@ -10,22 +10,9 @@
 #define C_H
 
 #include <stdio.h>
-#include <stddef.h>
-
-//Создание псевдонимов
-typedef enum{
-	CHAR_TYPE,
-	SHORT_TYPE,
-	INT_TYPE,
-	LONG_TYPE,
-	FLOAT_TYPE,
-	DOUBLE_TYPE,
-	U_INT_TYPE,
-	U_CHAR_TYPE
-} DataType;
 
 //Создание прототипа функции
-void print_array_elements(void*, size_t, DataType);
+void output_value(void* arr, const char* ar_type);
 
 //Директивы для совместимости С-кода с C++ компиляторами
 #ifdef __cplusplus
