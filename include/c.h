@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 
-//Создание прототипа функции
+//Создание прототипов функций ввода/вывода
 void output_value(void* arr, const char* ar_type);
-
+void input_value(void* arr, const char* ar_type);
 //Директивы для совместимости С-кода с C++ компиляторами
 #ifdef __cplusplus
 extern "C" {
