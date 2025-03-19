@@ -28,19 +28,30 @@ struct _node2_ {
 	int val;
 };
 
+struct _list1_ {
+	struct _node1_ *head;
+	struct _node1_ *tail;
+};
 
-void __add1 ( struct _node1_ *, struct _node1_ * );
+struct _list2_ {
+	struct _node2_ *head;
+	struct _node2_ *tail;
+};
 
-void __del1 ( struct _node1_ * );
-
-void __print1 ( struct _node1_ * );
 
 
-void __add2 ( struct _node2_ *, struct _node2_ * );
+void __list_add1 ( struct _list1_ *, struct _node1_ * );
 
-void __del2 ( struct _node2_ * );
+void __list_del1 ( struct _list1_ * );
 
-void __print2 ( struct _node2_ * );
+void __list_print1 ( struct _list1_ * );
+
+
+void __list_add2 ( struct _list2_ *, struct _node2_ * );
+
+void __list_del2 ( struct _list2_ * );
+
+void __list_print2 ( struct _list2_ * );
 
 
 

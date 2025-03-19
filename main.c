@@ -18,6 +18,11 @@ int main ( void ){
 		{ NULL, 8 }
 	};
 
+	struct _list1_  list1 [ ] = {
+		{ .head = node1, .tail = node1 }
+	};
+
+
 	struct _node2_ node2 [  ] = {
 		{ NULL, NULL, 9 },
 		{ NULL,	NULL, 10 },
@@ -29,44 +34,48 @@ int main ( void ){
 		{ NULL, NULL, 16 }
 	};
 
-	__add1 ( node1, node1 + 1 );
-	__add1 ( node1 + 1, node1 + 2 );
-	__add1 ( node1 + 2, node1 + 3 );
-	__add1 ( node1 + 3, node1 + 4 );
-	__add1 ( node1 + 4, node1 + 5 );
-	__add1 ( node1 + 5, node1 + 6 );
-	__add1 ( node1 + 6, node1 + 7 );
+	struct _list2_  list2 [ ] = {
+		{ node2, node2 }
+	};
 
-	__add2 ( node2, node2 + 1 );
-	__add2 ( node2 + 1, node2 + 2 );
-	__add2 ( node2 + 2, node2 + 3 );
-	__add2 ( node2 + 3, node2 + 4 );
-	__add2 ( node2 + 4, node2 + 5 );
-	__add2 ( node2 + 5, node2 + 6 );
-	__add2 ( node2 + 6, node2 + 7 );
+
+
+	__list_add1 ( list1, node1 + 1 );
+	__list_add1 ( list1, node1 + 2 );
+	__list_add1 ( list1, node1 + 3 );
+	__list_add1 ( list1, node1 + 4 );
+	__list_add1 ( list1, node1 + 5 );
+	__list_add1 ( list1, node1 + 6 );
+	__list_add1 ( list1, node1 + 7 );
+	
+	__list_add2 ( list2, node2 + 1 );
+	__list_add2 ( list2, node2 + 2 );
+	__list_add2 ( list2, node2 + 3 );
+	__list_add2 ( list2, node2 + 4 );
+	__list_add2 ( list2, node2 + 5 );
+	__list_add2 ( list2, node2 + 6 );
+	__list_add2 ( list2, node2 + 7 );
 
 	/*
 	1	2	3	4	5	6	7	8
 	9	10	11	12	13	14	15	16
 	*/
-	__print1 ( node1 );
-	__print2 ( node2 );
+	__list_print1 ( list1 );
+	__list_print2 ( list2 );
 
-	__print_rev ( node2 + 7 );
+	__list_del1 ( list1 );
+	__list_del2 ( list2 );
+
+
+	/*
+	1	3	4	5	6	7	8
+	9	11	12	13	14	15	16
+	*/
+	__list_print1 ( list1 );
+	__list_print2 ( list2 );
 
 	return 0;
 }
 
-
-void __print_rev ( struct _node2_ *node )
-{
-
-	while ( node != NULL ){
-		printf ( "%d\t", node->val );
-		node = node->prev;
-	}
-	
-	printf ( "\n" );
-}
 
 
