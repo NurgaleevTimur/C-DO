@@ -2,18 +2,18 @@
 #include <stdio.h>
 
 
-void __add1 ( struct __node1__ *node, struct __node1__ *add )
+void __add1 ( struct _node1_ *node, struct _node1_ *add )
 {
-	struct __node1__ *sv;
+	struct _node1_ *sv;
 
 	sv = node->next;
 	node->next = add;
 	add->next = sv;
 }
 
-void __del1 ( struct __node1__ *node )
+void __del1 ( struct _node1_ *node )
 {
-	struct __node1__ *sv;
+	struct _node1_ *sv;
 
 	sv = node;
 	node = node->next;
@@ -21,7 +21,7 @@ void __del1 ( struct __node1__ *node )
 
 }
 
-void __print1 ( struct __node1__ *node )
+void __print1 ( struct _node1_ *node )
 {
 	while ( node != NULL ){
 		printf ( "%d\t", node->val );
