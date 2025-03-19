@@ -1,6 +1,11 @@
 #include "include/c.h"
 #include <stdio.h>
 
+
+void __print_rev ( struct _node2_ * );
+
+
+
 int main ( void ){
 	struct _node1_ node1 [  ] = {
 		{ NULL, 1 },
@@ -47,19 +52,21 @@ int main ( void ){
 	__print1 ( node1 );
 	__print2 ( node2 );
 
-
-	__del1 ( node1 );
-	__del2 ( node2 );
-
-
-	/*
-	1	3	4	5	6	7	8
-	9	11	12	13	14	15	16
-	*/
-	__print1 ( node1 );
-	__print2 ( node2 );
+	__print_rev ( node2 + 7 );
 
 	return 0;
+}
+
+
+void __print_rev ( struct _node2_ *node )
+{
+
+	while ( node != NULL ){
+		printf ( "%d\t", node->val );
+		node = node->prev;
+	}
+	
+	printf ( "\n" );
 }
 
 
