@@ -23,7 +23,14 @@ struct _node_ {
 	void *data;
 };
 
+enum type {
+	CHAR,
+	INT,
+	LONG,
+	FLOAT
+};
 
+void print ( struct _node_ *, enum type );
 
 
 #ifdef __cplusplus
