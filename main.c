@@ -6,7 +6,6 @@ int main ( void ) {
 	int		i 	= 2004;
 	long		l 	= 1971;
 	float		f 	= 2001.1f;
-	enum type 	type 	= LONG;
 
 	struct _node_ list [ ] = {
 		{ list + 1, &c },
@@ -15,6 +14,7 @@ int main ( void ) {
 		{ NULL	  , &f }
 	};
 
+	print_t mas_ptr [ ] = { (print_t)print_char, (print_t)print_int, (print_t)print_long, (print_t)print_float };
 	
 	struct _node_ *sv = list;
 	while ( sv != NULL ){
@@ -23,6 +23,8 @@ int main ( void ) {
 	}
 
 
-	print ( list, type );
+	print ( list, INT, mas_ptr );
 
+
+	print_int ( list[1].data );
 }

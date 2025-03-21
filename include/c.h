@@ -29,8 +29,14 @@ enum type {
 	LONG,
 	FLOAT
 };
+typedef void ( *print_t ) ( void * );
 
-void print ( struct _node_ *, enum type );
+void print ( struct _node_ *, enum type, print_t [] );
+
+void print_char ( char * );
+void print_int ( int * );
+void print_long ( long * );
+void print_float ( float * );
 
 
 #ifdef __cplusplus
