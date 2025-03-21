@@ -8,15 +8,23 @@ int main ( void ) {
 	float		f 	= 2001.1f;
 
 	struct _node_ list [ ] = {
-		{ list + 1, &c },
-		{ list + 2, &i },
-		{ list + 3, &l },
-		{ NULL	  , &f }
+		{ NULL, (print_t) print_char, &c },
+		{ NULL, (print_t) print_int, &i },
+		{ NULL, (print_t) print_long, &l },
+		{ NULL	  , (print_t) print_float, &f }
 	};
+	struct _node_ 	*sv	= list;
+
+	__add ( list, list + 1 );
+	__add ( list, list + 2 );
+	__add ( list, list + 3 );
+
+	__del ( list );
+
+	__print_new ( list );
 
 	print_t mas_ptr [ ] = { (print_t)print_char, (print_t)print_int, (print_t)print_long, (print_t)print_float };
 	
-	struct _node_ *sv = list;
 	while ( sv != NULL ){
 		printf ( "GOOD\n" );
 		sv = sv->next;
@@ -27,4 +35,6 @@ int main ( void ) {
 
 
 	print_int ( list[1].data );
+
+
 }

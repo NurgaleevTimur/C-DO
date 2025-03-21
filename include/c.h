@@ -18,8 +18,12 @@
  extern "C" {
 #endif
 
+typedef void ( *print_t ) ( void * );
+
+
 struct _node_ {
 	struct _node_ *next;
+	print_t func;
 	void *data;
 };
 
@@ -29,7 +33,6 @@ enum type {
 	LONG,
 	FLOAT
 };
-typedef void ( *print_t ) ( void * );
 
 void print ( struct _node_ *, enum type, print_t [] );
 
@@ -37,6 +40,11 @@ void print_char ( char * );
 void print_int ( int * );
 void print_long ( long * );
 void print_float ( float * );
+
+
+void __add ( struct _node_ *, struct  _node_ * );
+void __del( struct _node_ * );
+void __print_new ( struct _node_ * );
 
 
 #ifdef __cplusplus
